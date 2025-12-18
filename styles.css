@@ -261,3 +261,30 @@ a:hover{ text-decoration: underline; }
   border-color: rgba(124,247,212,.35);
   background: rgba(124,247,212,.14);
 }
+/* --- FIX overflow móvil --- */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  min-width: 0; /* evita que flex/grid fuerce anchuras raras */
+}
+
+/* Links largos (Amazon) sin romper la UI */
+.links a, .item a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Inputs y selects no deben empujar el layout */
+.filters .input {
+  max-width: 100%;
+}
+
+/* Por si algún chip o pill se hace largo */
+.pill, .chip {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
