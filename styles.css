@@ -1,49 +1,63 @@
 :root{
   --bg:#0f1220;
-  --card:#151a2e;
   --text:#eef1ff;
   --muted:#b7bddc;
   --accent:#7cf7d4;
-  --border:rgba(255,255,255,.10);
+
+  --surface: rgba(255,255,255,.04);
+  --surface2: rgba(0,0,0,.18);
+  --border: rgba(255,255,255,.10);
+
   --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
 }
 
-*{box-sizing:border-box}
+*{ box-sizing:border-box; }
+
+html, body { height: 100%; }
+
 body{
   margin:0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: radial-gradient(1200px 600px at 20% 0%, rgba(124,247,212,.12), transparent 60%),
-              radial-gradient(900px 500px at 90% 10%, rgba(160,140,255,.12), transparent 60%),
-              var(--bg);
   color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 20% 0%, rgba(124,247,212,.12), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(160,140,255,.12), transparent 60%),
+    var(--bg);
 }
 
+/* Full width, one-page layout */
 .container{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Comfortable reading width inside full-width sections */
+.content{
+  width: 100%;
   max-width: 980px;
   margin: 0 auto;
-  padding: 22px;
+  padding: 16px;
 }
 
-.card{
-  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+@media (min-width: 768px){
+  .content{ padding: 22px; }
+}
+
+/* Sections that feel like pages, not floating cards */
+.page{
+  width: 100%;
+  padding: 0;
+}
+
+/* “Panels” inside sections (this replaces the old big floating card) */
+.panel{
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 18px;
+  border-radius: var(--radius);
+  padding: 16px;
   box-shadow: var(--shadow);
-}
-
-.hero h1{
-  margin: 8px 0 10px;
-  font-size: clamp(24px, 4vw, 38px);
-  line-height: 1.1;
-}
-.accent{ color: var(--accent); }
-
-.subtitle{
-  margin: 0 0 14px;
-  color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.45;
 }
 
 .badge{
@@ -55,116 +69,90 @@ body{
   font-size: .9rem;
 }
 
-.note{
-  margin-top: 14px;
-  padding: 12px;
-  border-radius: 14px;
-  border: 1px dashed rgba(255,255,255,.18);
-  background: rgba(0,0,0,.18);
+h1{
+  margin: 10px 0 10px;
+  font-size: clamp(22px, 5vw, 40px);
+  line-height: 1.1;
 }
-.note ul{ margin: 8px 0 0 18px; }
+
+h2{
+  margin: 0 0 10px;
+  font-size: clamp(18px, 4vw, 24px);
+}
+
+.accent{ color: var(--accent); }
+
+p{
+  margin: 0 0 12px;
+  line-height: 1.45;
+}
+
 .muted{ color: var(--muted); }
 
+hr{
+  border:0;
+  border-top: 1px solid var(--border);
+  margin: 16px 0;
+}
+
+/* Buttons - mobile first */
 .actions{
-  display:flex;
+  display: grid;
   gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 14px;
+}
+
+@media (min-width: 520px){
+  .actions{ grid-template-columns: 1fr 1fr; }
 }
 
 .btn{
+  width: 100%;
   border: 1px solid var(--border);
   background: rgba(255,255,255,.06);
   color: var(--text);
-  padding: 11px 14px;
+  padding: 12px 14px;
   border-radius: 14px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
 }
+
 .btn:hover{ background: rgba(255,255,255,.10); }
+
 .btn.primary{
   background: rgba(124,247,212,.14);
   border-color: rgba(124,247,212,.28);
 }
 .btn.primary:hover{ background: rgba(124,247,212,.20); }
+
 .btn.ghost{
+  width: auto;
   background: transparent;
 }
 
-.hidden{ display:none; }
-
+/* Topbar */
 .topbar{
   display:flex;
   align-items:center;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
-.topbar h2{ margin:0; }
 
-.filters{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 10px 0 14px;
-}
-.input{
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(0,0,0,.18);
-  color: var(--text);
-  outline: none;
-}
-.input::placeholder{ color: rgba(183,189,220,.8); }
-
+/* Cards grid */
 .grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
   gap: 12px;
 }
 
-.item{
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 12px;
-  background: rgba(0,0,0,.16);
+@media (min-width: 560px){
+  .grid{ grid-template-columns: repeat(2, 1fr); }
 }
-.item h3{
-  margin: 0 0 6px;
-  font-size: 1.05rem;
-}
-.meta{
-  display:flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 8px;
-}
-.pill{
-  font-size: .85rem;
-  padding: 5px 9px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--muted);
+@media (min-width: 980px){
+  .grid{ grid-template-columns: repeat(3, 1fr); }
 }
 
-.links{
-  margin-top: 10px;
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-a{
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-}
-a:hover{ text-decoration: underline; }
-
-.footer{
-  margin-top: 14px;
-  text-align:center;
-  opacity: .9;
-}
+/* Gift cards */
 .item{
   border: 1px solid rgba(255,255,255,.10);
   border-radius: 18px;
@@ -187,7 +175,89 @@ a:hover{ text-decoration: underline; }
   letter-spacing: .2px;
 }
 
-.item .muted{
-  line-height: 1.35;
+.meta{
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
+.pill{
+  font-size: .85rem;
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: rgba(255,255,255,.03);
+}
+
+/* Links inside cards */
+.links{
+  margin-top: 10px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+a{
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+a:hover{ text-decoration: underline; }
+
+/* Filters */
+.filters{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 8px 0 14px;
+}
+
+.input{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,.18);
+  color: var(--text);
+  outline: none;
+}
+
+@media (min-width: 560px){
+  .input{ width: auto; min-width: 260px; }
+}
+
+.input::placeholder{ color: rgba(183,189,220,.8); }
+
+.hidden{ display:none; }
+
+.footer{
+  margin: 18px 0 26px;
+  text-align:center;
+  opacity: .9;
+}
+
+/* Franchise chips */
+.chips{
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0 14px;
+}
+
+.chip{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.chip:hover{ background: rgba(255,255,255,.09); }
+
+.chip.active{
+  border-color: rgba(124,247,212,.35);
+  background: rgba(124,247,212,.14);
+}
