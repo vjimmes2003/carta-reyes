@@ -1,106 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mi Carta de Reyes 🎁</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-      color: #222;
-    }
-    h1 {
-      text-align: center;
-    }
-    h2 {
-      margin-top: 40px;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-    }
-    .section {
-      margin-top: 20px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      background: white;
-      margin-bottom: 10px;
-      padding: 12px;
-      border-radius: 8px;
-    }
-    a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    .note {
-      font-size: 0.9em;
-      color: #555;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Carta de Reyes de Víctor Hugo 🎁</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="container">
 
-<h1>🎄 Mi Carta de Reyes</h1>
+    <!-- HERO / BIENVENIDA -->
+    <header class="card hero" id="view-home">
+      <div class="badge">🎄 2025-2026</div>
+      <h1>Bienvenido a la carta de Reyes de <span class="accent">Víctor Hugo</span> 🎁</h1>
 
-<p class="note">
-Prefiero una cosa bien elegida antes que muchas al azar.  
-Evitar Funkos y cosas muy grandes 🙂
-</p>
+      <p class="subtitle">
+        Aquí va el mensaje con trasfondo. La idea es que quien entre entienda por qué esta lista existe,
+        que no es “quiero por querer”, sino que me hace ilusión y tiene sentido.
+      </p>
 
-<h2>🅰️ Decoración & Merchandising</h2>
-<ul>
-  <li>Luz ambiente cálida para escritorio (no molesta a los ojos)</li>
-  <li>Luz temática Stranger Things (Upside Down)</li>
-  <li>Luz temática Fallout</li>
-  <li>Luz temática The Last of Us</li>
-</ul>
+      <div class="note">
+        <p><strong>Dos caminos:</strong></p>
+        <ul>
+          <li><strong>TOP (no fallas):</strong> cosas que me harían ilusión de verdad.</li>
+          <li><strong>IDEAS:</strong> franquicias + ejemplos por rangos de precio para elegir con libertad.</li>
+        </ul>
+        <p class="muted">Evitar Funkos y cosas enormes 🙏 Mejor calidad que cantidad.</p>
+      </div>
 
-<h2>🖤 Figuras (pocas, bien elegidas)</h2>
-<ul>
-  <li>Hornet – Hollow Knight (pose agresiva o chill)</li>
-  <li>Jinx – Arcane (figura individual)</li>
-  <li>Vi – Arcane (figura individual)</li>
-  <li>Makima – Chainsaw Man</li>
-  <li>Power – Chainsaw Man</li>
-  <li>Ellie – The Last of Us (juego)</li>
-  <li>Fallout (Deathclaw, servoarmadura o decorativo)</li>
-  <li>Misa Misa – Death Note</li>
-  <li>Luna Lovegood – Harry Potter</li>
-</ul>
+      <div class="actions">
+        <button class="btn primary" data-go="top">✅ TOP (no fallas)</button>
+        <button class="btn" data-go="ideas">💡 IDEAS (franquicias + ejemplos)</button>
+      </div>
+    </header>
 
-<h2>🎮 Valorant (mini merch)</h2>
-<ul>
-  <li>Mini figura de Raze</li>
-  <li>Mini figura de Killjoy</li>
-  <li>Mini figura de Omen</li>
-</ul>
+    <!-- TOP -->
+    <section class="card hidden" id="view-top">
+      <div class="topbar">
+        <button class="btn ghost" data-go="home">← Volver</button>
+        <h2>✅ TOP (no fallas)</h2>
+      </div>
 
-<h2>🃏 Juegos de mesa / cartas</h2>
-<ul>
-  <li>Cards Against Humanity</li>
-  <li>Joking Hazard</li>
-  <li>Exploding Kittens</li>
-  <li>Monopoly Fallout</li>
-</ul>
+      <p class="muted">
+        Si quieres acertar sin darle muchas vueltas, elige algo de aquí.
+        Hay opciones de distintos precios.
+      </p>
 
-<h2>🧠 Regalo estrella – Organización digital</h2>
-<ul>
-  <li>Gadget físico de grabación voz → texto automático (sin suscripción)</li>
-</ul>
+      <div id="top-list" class="grid"></div>
+    </section>
 
-<h2>🎟️ Experiencias</h2>
-<ul>
-  <li>Escape Room</li>
-  <li>Experiencia VR</li>
-  <li>Museo temático</li>
-  <li>Simulador de conducción</li>
-  <li>Taller o actividad tecnológica</li>
-</ul>
+    <!-- IDEAS -->
+    <section class="card hidden" id="view-ideas">
+      <div class="topbar">
+        <button class="btn ghost" data-go="home">← Volver</button>
+        <h2>💡 IDEAS (franquicias + ejemplos)</h2>
+      </div>
 
+      <div class="filters">
+        <input id="search" class="input" type="search" placeholder="Buscar (Fallout, Stranger Things, luz, cartas...)" />
+        <select id="price" class="input">
+          <option value="">Todos los precios</option>
+          <option value="€">€ (barato)</option>
+          <option value="€€">€€ (medio)</option>
+          <option value="€€€">€€€ (alto)</option>
+        </select>
+      </div>
+
+      <div id="ideas-list" class="grid"></div>
+    </section>
+
+    <footer class="footer">
+      <span class="muted">Hecho con cariño. Si dudas, pregunta y listo 🙂</span>
+    </footer>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
