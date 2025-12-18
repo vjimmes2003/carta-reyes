@@ -165,3 +165,29 @@ a:hover{ text-decoration: underline; }
   text-align:center;
   opacity: .9;
 }
+.item{
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(10,12,22,.55);
+  backdrop-filter: blur(6px);
+  transition: transform .16s ease, background .16s ease, border-color .16s ease;
+  box-shadow: 0 10px 26px rgba(0,0,0,.35);
+}
+
+.item:hover{
+  transform: translateY(-3px);
+  background: rgba(10,12,22,.70);
+  border-color: rgba(124,247,212,.28);
+}
+
+.item h3{
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  letter-spacing: .2px;
+}
+
+.item .muted{
+  line-height: 1.35;
+}
+
