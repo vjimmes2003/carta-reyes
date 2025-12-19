@@ -79,6 +79,7 @@
             ${tags}
           </div>
           <div class="links">
+          <p>Enlaces de compra</p>
             ${links || `<span class="muted">Links: pendiente de añadir</span>`}
           </div>
         </div>
