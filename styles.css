@@ -4,17 +4,21 @@
   --muted:#b7bddc;
   --accent:#7cf7d4;
 
-  --surface: rgba(255,255,255,.04);
-  --surface2: rgba(0,0,0,.18);
+  --surface: rgba(255,255,255,.05);
+  --surface2: rgba(0,0,0,.22);
   --border: rgba(255,255,255,.10);
 
   --shadow: 0 10px 30px rgba(0,0,0,.35);
   --radius: 18px;
 }
 
-*{ box-sizing:border-box; }
+*{ box-sizing:border-box; min-width:0; }
 
-html, body { height: 100%; }
+html, body{
+  height:100%;
+  width:100%;
+  overflow-x:hidden;
+}
 
 body{
   margin:0;
@@ -26,38 +30,28 @@ body{
     var(--bg);
 }
 
-/* Full width, one-page layout */
-.container{
-  width: 100%;
-  margin: 0;
-  padding: 0;
+a{ color: var(--accent); text-decoration:none; font-weight:700; }
+a:hover{ text-decoration: underline; }
+
+.muted{ color: var(--muted); }
+.hidden{ display:none; }
+
+/* ---------------------------------
+   HERO
+---------------------------------- */
+.hero{
+  padding: 22px 0 10px;
 }
 
-/* Comfortable reading width inside full-width sections */
-.content{
-  width: 100%;
+.hero__inner{
+  width:100%;
   max-width: 980px;
   margin: 0 auto;
   padding: 16px;
 }
 
 @media (min-width: 768px){
-  .content{ padding: 22px; }
-}
-
-/* Sections that feel like pages, not floating cards */
-.page{
-  width: 100%;
-  padding: 0;
-}
-
-/* “Panels” inside sections (this replaces the old big floating card) */
-.panel{
-  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: var(--shadow);
+  .hero__inner{ padding: 22px; }
 }
 
 .badge{
@@ -67,78 +61,145 @@ body{
   border: 1px solid var(--border);
   color: var(--muted);
   font-size: .9rem;
+  background: rgba(255,255,255,.03);
 }
 
-h1{
+.hero h1{
   margin: 10px 0 10px;
   font-size: clamp(22px, 5vw, 40px);
-  line-height: 1.1;
+  line-height: 1.12;
+  letter-spacing: .2px;
 }
 
-h2{
-  margin: 0 0 10px;
-  font-size: clamp(18px, 4vw, 24px);
+.hero__text{
+  margin: 0 0 14px;
+  line-height: 1.5;
+  color: var(--muted);
 }
 
-.accent{ color: var(--accent); }
-
-p{
-  margin: 0 0 12px;
-  line-height: 1.45;
-}
-
-.muted{ color: var(--muted); }
-
-hr{
-  border:0;
-  border-top: 1px solid var(--border);
-  margin: 16px 0;
-}
-
-/* Buttons - mobile first */
-.actions{
-  display: grid;
-  gap: 10px;
-  margin-top: 14px;
+.cta{
+  display:grid;
+  gap:10px;
+  margin-top: 10px;
 }
 
 @media (min-width: 520px){
-  .actions{ grid-template-columns: 1fr 1fr; }
+  .cta{ grid-template-columns: 1fr 1fr; }
 }
 
+/* ---------------------------------
+   CONTROLS
+---------------------------------- */
+.controls{
+  margin-top: 14px;
+  display:grid;
+  gap: 10px;
+}
+
+.input{
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,.18);
+  color: var(--text);
+  outline: none;
+}
+
+.input::placeholder{ color: rgba(183,189,220,.8); }
+
+.toggle{
+  display:flex;
+  gap:10px;
+}
+
+.tab{
+  flex:1;
+  padding: 11px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.tab:hover{ background: rgba(255,255,255,.09); }
+
+.tab--active{
+  border-color: rgba(124,247,212,.35);
+  background: rgba(124,247,212,.14);
+}
+
+/* ---------------------------------
+   BUTTONS
+---------------------------------- */
 .btn{
   width: 100%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 12px 14px;
+  border-radius: 14px;
   border: 1px solid var(--border);
   background: rgba(255,255,255,.06);
   color: var(--text);
-  padding: 12px 14px;
-  border-radius: 14px;
-  cursor: pointer;
-  font-weight: 700;
+  font-weight: 800;
+  cursor:pointer;
 }
 
 .btn:hover{ background: rgba(255,255,255,.10); }
 
-.btn.primary{
+.btn--primary{
   background: rgba(124,247,212,.14);
   border-color: rgba(124,247,212,.28);
 }
-.btn.primary:hover{ background: rgba(124,247,212,.20); }
+.btn--primary:hover{ background: rgba(124,247,212,.20); }
 
-.btn.ghost{
-  width: auto;
+.btn--ghost{
   background: transparent;
 }
 
-/* Topbar */
-.topbar{
-  display:flex;
-  align-items:center;
-  gap: 10px;
+/* ---------------------------------
+   MAIN / SECTIONS
+---------------------------------- */
+.main{
+  width:100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 16px 26px;
+}
+
+@media (min-width: 768px){
+  .main{ padding: 0 22px 30px; }
+}
+
+.section{
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  box-shadow: var(--shadow);
+}
+
+.section__head{
   margin-bottom: 12px;
 }
 
-/* Cards grid */
+.section__head h2{
+  margin: 0 0 6px;
+  font-size: clamp(18px, 4vw, 24px);
+}
+
+.section__head p{
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ---------------------------------
+   GRID + CARDS
+---------------------------------- */
 .grid{
   display:grid;
   grid-template-columns: 1fr;
@@ -152,27 +213,45 @@ hr{
   .grid{ grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Gift cards */
-.item{
+.card{
   border: 1px solid rgba(255,255,255,.10);
   border-radius: 18px;
-  padding: 14px;
   background: rgba(10,12,22,.55);
   backdrop-filter: blur(6px);
-  transition: transform .16s ease, background .16s ease, border-color .16s ease;
   box-shadow: 0 10px 26px rgba(0,0,0,.35);
+  overflow:hidden; /* CLAVE para que la imagen no “se salga” */
+  transition: transform .16s ease, background .16s ease, border-color .16s ease;
 }
 
-.item:hover{
+.card:hover{
   transform: translateY(-3px);
   background: rgba(10,12,22,.70);
   border-color: rgba(124,247,212,.28);
 }
 
-.item h3{
+.thumb{
+  width:100%;
+  height: 170px;
+  object-fit: cover;
+  display:block;
+  background: rgba(0,0,0,.20);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.card__body{
+  padding: 14px;
+}
+
+.card__title{
   margin: 0 0 8px;
   font-size: 1.05rem;
   letter-spacing: .2px;
+}
+
+.card__desc{
+  margin: 0 0 10px;
+  line-height: 1.45;
+  color: var(--muted);
 }
 
 .meta{
@@ -189,102 +268,66 @@ hr{
   border: 1px solid var(--border);
   color: var(--muted);
   background: rgba(255,255,255,.03);
-}
-
-/* Links inside cards */
-.links{
-  margin-top: 10px;
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-a{
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 700;
-}
-a:hover{ text-decoration: underline; }
-
-/* Filters */
-.filters{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 8px 0 14px;
-}
-
-.input{
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(0,0,0,.18);
-  color: var(--text);
-  outline: none;
-}
-
-@media (min-width: 560px){
-  .input{ width: auto; min-width: 260px; }
-}
-
-.input::placeholder{ color: rgba(183,189,220,.8); }
-
-.hidden{ display:none; }
-
-.footer{
-  margin: 18px 0 26px;
-  text-align:center;
-  opacity: .9;
-}
-
-/* Franchise chips */
-.chips{
-  display:flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin: 10px 0 14px;
-}
-
-.chip{
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.05);
-  color: var(--text);
-  padding: 8px 10px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-weight: 700;
-}
-.chip:hover{ background: rgba(255,255,255,.09); }
-
-.chip.active{
-  border-color: rgba(124,247,212,.35);
-  background: rgba(124,247,212,.14);
-}
-/* --- FIX overflow móvil --- */
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-* {
-  min-width: 0; /* evita que flex/grid fuerce anchuras raras */
-}
-
-/* Links largos (Amazon) sin romper la UI */
-.links a, .item a {
+  max-width: 100%;
   overflow-wrap: anywhere;
+}
+
+.pill--price{
+  color: var(--text);
+  border-color: rgba(124,247,212,.22);
+  background: rgba(124,247,212,.10);
+}
+
+.links{
+  margin-top: 12px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.linkbtn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.06);
+  color: var(--accent);
+  text-decoration:none;
+  font-weight:800;
+  max-width:100%;
+  overflow-wrap:anywhere;
   word-break: break-word;
 }
 
-/* Inputs y selects no deben empujar el layout */
-.filters .input {
-  max-width: 100%;
+.linkbtn:hover{
+  background: rgba(255,255,255,.10);
+  text-decoration:none;
 }
 
-/* Por si algún chip o pill se hace largo */
-.pill, .chip {
-  max-width: 100%;
-  overflow-wrap: anywhere;
+/* Empty state */
+.empty{
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255,255,255,.18);
+  color: var(--muted);
+  background: rgba(0,0,0,.10);
 }
 
+/* ---------------------------------
+   FOOTER
+---------------------------------- */
+.footer{
+  width:100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 16px 26px;
+  text-align:center;
+  opacity: .95;
+}
+
+@media (min-width: 768px){
+  .footer{ padding: 0 22px 30px; }
+}

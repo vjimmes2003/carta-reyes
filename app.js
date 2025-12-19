@@ -1,161 +1,153 @@
-const views = {
-  home: document.getElementById("view-home"),
-  top: document.getElementById("view-top"),
-  ideas: document.getElementById("view-ideas"),
-};
+(() => {
+  const $ = (sel) => document.querySelector(sel);
 
-function go(viewKey) {
-  Object.values(views).forEach(v => v.classList.add("hidden"));
-  views[viewKey].classList.remove("hidden");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
+  const topGrid = $("#topGrid");
+  const ideasGrid = $("#ideasGrid");
+  const topEmpty = $("#topEmpty");
+  const ideasEmpty = $("#ideasEmpty");
 
-document.querySelectorAll("[data-go]").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const target = btn.dataset.go;
-    if (target === "ideas") {
-      // If there is a franchise in hash, keep it; otherwise clear to #ideas
-      if (!location.hash.startsWith("#ideas")) location.hash = "#ideas";
-    } else {
-      location.hash = "#home";
-    }
-    go(target);
+  const search = $("#search");
+  const tabTop = $("#tabTop");
+  const tabIdeas = $("#tabIdeas");
+
+  const TOP = Array.isArray(window.TOP_ITEMS) ? window.TOP_ITEMS : [];
+  const IDEAS = Array.isArray(window.IDEA_ITEMS) ? window.IDEA_ITEMS : [];
+
+  // Estado
+  const state = {
+    active: "top",       // "top" | "ideas"
+    query: ""
+  };
+
+  // --------------------
+  // Utils
+  // --------------------
+  const esc = (s) =>
+    String(s ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+  const normalize = (s) =>
+    String(s ?? "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+  const matchesQuery = (item, q) => {
+    if (!q) return true;
+    const hay = normalize(
+      [
+        item.title,
+        item.desc,
+        item.price,
+        (item.tags || []).join(" "),
+        item.franchise_name,
+        item.franchise_slug
+      ].join(" ")
+    );
+    return hay.includes(q);
+  };
+
+  // --------------------
+  // Render
+  // --------------------
+  function renderItem(item) {
+    const tags = (item.tags || [])
+      .map(t => `<span class="pill">${esc(t)}</span>`)
+      .join("");
+
+    const links = (item.links || [])
+      .filter(l => l?.url && String(l.url).trim().length > 0)
+      .map(l => `<a class="linkbtn" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`)
+      .join("");
+
+    const img = item.img
+      ? `<img class="thumb" src="${esc(item.img)}" alt="${esc(item.title)}" loading="lazy">`
+      : "";
+
+    return `
+      <article class="card">
+        ${img}
+        <div class="card__body">
+          <h3 class="card__title">${esc(item.title)}</h3>
+          ${item.desc ? `<p class="card__desc">${esc(item.desc)}</p>` : ""}
+          <div class="meta">
+            ${item.price ? `<span class="pill pill--price">${esc(item.price)}</span>` : ""}
+            ${tags}
+          </div>
+          <div class="links">
+            ${links || `<span class="muted">Links: pendiente de añadir</span>`}
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderList(list, targetEl, emptyEl) {
+    const q = normalize(state.query);
+    const filtered = list.filter(item => matchesQuery(item, q));
+
+    targetEl.innerHTML = filtered.map(renderItem).join("");
+
+    if (filtered.length === 0) emptyEl.classList.remove("hidden");
+    else emptyEl.classList.add("hidden");
+  }
+
+  function render() {
+    renderList(TOP, topGrid, topEmpty);
+    renderList(IDEAS, ideasGrid, ideasEmpty);
+    syncTabs();
+  }
+
+  // --------------------
+  // UI behavior
+  // --------------------
+  function setActive(tab) {
+    state.active = tab;
+
+    // Scroll suave a sección
+    const id = tab === "top" ? "#top" : "#ideas";
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    // Actualiza hash sin saltos raros
+    if (location.hash !== id) history.replaceState(null, "", id);
+
+    syncTabs();
+  }
+
+  function syncTabs() {
+    const isTop = state.active === "top";
+    tabTop.classList.toggle("tab--active", isTop);
+    tabIdeas.classList.toggle("tab--active", !isTop);
+  }
+
+  // --------------------
+  // Events
+  // --------------------
+  tabTop.addEventListener("click", () => setActive("top"));
+  tabIdeas.addEventListener("click", () => setActive("ideas"));
+
+  search.addEventListener("input", (e) => {
+    state.query = e.target.value.trim();
+    render();
   });
-});
 
-function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g, s => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-  }[s]));
-}
-function escapeAttr(str) {
-  return String(str).replace(/"/g, "%22");
-}
+  // Si entran con hash directo
+  function initFromHash() {
+    if (location.hash === "#ideas") state.active = "ideas";
+    else state.active = "top";
+    syncTabs();
+  }
 
-function renderItem(item) {
-  const tags = (item.tags || []).map(t => `<span class="pill">${escapeHtml(t)}</span>`).join("");
-  const links = (item.links || [])
-    .filter(l => l.url && l.url.trim().length > 0)
-    .map(l => `<a href="${escapeAttr(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`)
-    .join("");
-
-  return `
-    <article class="item">
-      <h3>${escapeHtml(item.title)}</h3>
-      ${item.desc ? `<div class="muted">${escapeHtml(item.desc)}</div>` : ""}
-      <div class="meta">
-        ${item.price ? `<span class="pill">${escapeHtml(item.price)}</span>` : ""}
-        ${tags}
-      </div>
-      ${links ? `<div class="links">${links}</div>` : `<div class="links muted">Links: pendiente de añadir</div>`}
-    </article>
-  `;
-}
-
-function renderList(el, items) {
-  el.innerHTML = items.map(renderItem).join("");
-}
-
-const topListEl = document.getElementById("top-list");
-const ideasListEl = document.getElementById("ideas-list");
-
-const searchEl = document.getElementById("search");
-const priceEl = document.getElementById("price");
-
-let activeFranchise = ""; // slug like "fallout"
-
-function getHashRoute() {
-  // Supported:
-  // #home
-  // #top
-  // #ideas
-  // #ideas/fallout
-  const h = (location.hash || "#home").replace("#", "");
-  const parts = h.split("/").filter(Boolean);
-  return { view: parts[0] || "home", franchise: parts[1] || "" };
-}
-
-function setActiveChip(slug) {
-  const chips = document.querySelectorAll(".chip");
-  chips.forEach(c => c.classList.toggle("active", c.dataset.slug === slug));
-}
-
-function renderChips() {
-  const wrap = document.getElementById("franchise-chips");
-  const fr = window.FRANCHISES || [];
-  const allChip = `<button class="chip ${activeFranchise==="" ? "active":""}" data-slug="">Todo</button>`;
-  const chips = fr.map(f => `<button class="chip" data-slug="${escapeAttr(f.slug)}">${escapeHtml(f.name)}</button>`).join("");
-  wrap.innerHTML = allChip + chips;
-
-  wrap.querySelectorAll(".chip").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const slug = btn.dataset.slug || "";
-      activeFranchise = slug;
-      setActiveChip(slug);
-
-      // Update hash for shareable link
-      if (slug) location.hash = `#ideas/${slug}`;
-      else location.hash = "#ideas";
-
-      applyFilters();
-    });
+  window.addEventListener("hashchange", () => {
+    initFromHash();
   });
 
-  setActiveChip(activeFranchise);
-}
-
-function applyFilters() {
-  const q = (searchEl?.value || "").trim().toLowerCase();
-  const p = priceEl?.value || "";
-
-  const filtered = (window.IDEA_ITEMS || []).filter(item => {
-    const matchesFr = !activeFranchise || item.franchise_slug === activeFranchise;
-
-    const haystack = [
-      item.title, item.desc, ...(item.tags || []),
-      item.franchise_name || "", item.franchise_slug || ""
-    ].join(" ").toLowerCase();
-
-    const matchesQ = !q || haystack.includes(q);
-    const matchesP = !p || item.price === p;
-
-    return matchesFr && matchesQ && matchesP;
-  });
-
-  renderList(ideasListEl, filtered);
-}
-
-function boot() {
-  // initial render
-  renderList(topListEl, window.TOP_ITEMS || []);
-
-  // chips
-  renderChips();
-
-  // filters listeners
-  searchEl?.addEventListener("input", applyFilters);
-  priceEl?.addEventListener("change", applyFilters);
-
-  // route
-  const route = getHashRoute();
-  if (route.view === "top") go("top");
-  else if (route.view === "ideas") go("ideas");
-  else go("home");
-
-  activeFranchise = route.franchise || "";
-  setActiveChip(activeFranchise);
-  applyFilters();
-}
-
-window.addEventListener("hashchange", () => {
-  const route = getHashRoute();
-  if (route.view === "top") go("top");
-  else if (route.view === "ideas") go("ideas");
-  else go("home");
-
-  activeFranchise = route.franchise || "";
-  setActiveChip(activeFranchise);
-  applyFilters();
-});
-
-boot();
+  // Init
+  initFromHash();
+  render();
+})();

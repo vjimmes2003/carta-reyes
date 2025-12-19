@@ -1,314 +1,222 @@
-// Franquicias para filtrar IDEAS (chips)
+// ===============================
+// Carta de Reyes — data.js
+// ===============================
+
 window.FRANCHISES = [
+  { slug: "tech-vr", name: "Tech / VR" },
+  { slug: "organizacion", name: "Organización" },
   { slug: "fallout", name: "Fallout" },
-  { slug: "the-last-of-us", name: "The Last of Us" },
-  { slug: "stranger-things", name: "Stranger Things" },
-  { slug: "arcane", name: "Arcane" },
   { slug: "hollow-knight", name: "Hollow Knight" },
   { slug: "chainsaw-man", name: "Chainsaw Man" },
-  { slug: "valorant", name: "Valorant" },
-  { slug: "death-note", name: "Death Note" },
-  { slug: "harry-potter", name: "Harry Potter" },
-  { slug: "voleibol", name: "Voleibol" },
+  { slug: "demon-slayer", name: "Demon Slayer" },
   { slug: "juegos-mesa", name: "Juegos de mesa" },
+  { slug: "barajas", name: "Barajas / Cartas" },
+  { slug: "setup", name: "Setup / Escritorio" },
+  { slug: "libros", name: "Libros" }
 ];
 
-// TOP (no fallas) – prioridad REAL según tú
+// ===============================
+// 🏆 TOP (no fallas)
+// ===============================
 window.TOP_ITEMS = [
   {
     title: "Meta Quest 3S",
-    desc: "Prioridad alta. Si cae esto, me explota la cabeza (para bien).",
-    tags: ["Top", "Tecnología", "VR"],
-    price: "€€€",
+    desc: "Visor VR para juegos, experiencias y aplicaciones.",
+    tags: ["Top", "Tech", "VR"],
+    price: "Amazon: 279 € (cupón: 249 €) · ECI: 379 € (256 GB)",
+    img: "assets/products/meta-quest-3s.jpg",
     links: [
-      { label: "Amazon", url: "" },
-      { label: "Alternativa", url: "" }
+      { label: "Amazon", url: "https://amzn.eu/d/f2xzSpi" },
+      { label: "El Corte Inglés", url: "https://www.elcorteingles.es/electronica/A52795734-gafas-de-realidad-mixta-meta-quest-3s-256-gb/?stype=text_box&color=Blanco" }
     ]
   },
   {
     title: "PLAUD Note Pro (voz → texto)",
-    desc: "La versión Pro: por la diferencia de precio, la normal no compensa. Prioridad: precisión > facilidad > PC.",
+    desc: "Grabadora inteligente con transcripción automática. Prioridad en precisión.",
     tags: ["Top", "Organización", "Voz a texto"],
-    price: "€€€",
+    price: "189 €",
+    img: "assets/products/plaud-note-pro.jpg",
     links: [
-      { label: "Web oficial / tienda", url: "" },
-      { label: "Amazon", url: "" },
-      { label: "Alternativa", url: "" }
+      { label: "Amazon", url: "https://amzn.eu/d/6rFvoGg" },
+      { label: "Web oficial", url: "https://es.plaud.ai/products/plaud-note-pro" }
     ]
   },
   {
-    title: "Figura Hollow Knight – Hornet (resina 8–12 cm)",
-    desc: "Puede ser agresiva o chill. Con que sea buena y no gigante, perfecto.",
-    tags: ["Top", "Hollow Knight", "Figura"],
-    price: "€€€",
+    title: "Monopoly Fallout (segunda mano)",
+    desc: "Edición Fallout. Ideal si aparece a buen precio y en buen estado.",
+    tags: ["Top", "Fallout", "Juegos de mesa"],
+    price: "35 € (Milanuncios) · 50 € (Wallapop)",
+    img: "assets/products/monopoly-fallout.jpg",
     links: [
-      { label: "Tienda / alternativa", url: "" }
+      { label: "Milanuncios", url: "https://www.milanuncios.com/juegos-de-mesa/monopoly-edicion-fallout-559097649.htm" },
+      { label: "Wallapop", url: "https://es.wallapop.com/item/monopoly-fallout-edicion-coleccionista-948002359" }
     ]
   },
   {
-    title: "Figura Hollow Knight – The Knight (resina 8–12 cm)",
-    desc: "Una figura del caballero para estantería/setup.",
-    tags: ["Top", "Hollow Knight", "Figura"],
-    price: "€€€",
+    title: "Libro: La saga Fallout — Historia de una mutación",
+    desc: "Libro sobre el universo Fallout (historia, arte y evolución).",
+    tags: ["Top", "Fallout", "Libro"],
+    price: "18,90 €",
+    img: "assets/products/libro-saga-fallout.jpg",
     links: [
-      { label: "Tienda / alternativa", url: "" }
-    ]
-  },
-
-  // “Primeras de franquicia” que podrían subir al TOP
-  {
-    title: "The Last of Us – Ellie (juego) figura / mini diorama",
-    desc: "Figura sola o con mini entorno. Cualquier opción buena me vale.",
-    tags: ["Top", "The Last of Us", "Figura"],
-    price: "€€€",
-    links: [
-      { label: "Amazon", url: "" },
-      { label: "Alternativa", url: "" }
+      { label: "El Corte Inglés", url: "https://www.elcorteingles.es/libros/A56958291-la-saga-fallout-historia-de-una-mutacion-tapa-blanda-con-solapas/?stype=text_box&color=Sin+especificar" },
+      { label: "Amazon", url: "https://amzn.eu/d/dgFB5gu" }
     ]
   },
   {
-    title: "Stranger Things – Luz Upside Down (ambiente)",
-    desc: "Luz oscura/ambiental que no moleste a los ojos.",
-    tags: ["Top", "Stranger Things", "Luz"],
-    price: "€€",
+    title: "Figura Nezuko contenta (Demon Slayer) — 11 cm",
+    desc: "Figura para estantería.",
+    tags: ["Top", "Demon Slayer", "Figura"],
+    price: "26,59 €",
+    img: "assets/products/figura-nezuko.jpg",
     links: [
-      { label: "Amazon", url: "" },
-      { label: "Alternativa", url: "" }
+      { label: "Amazon", url: "https://amzn.eu/d/12kuZ8w" }
     ]
   },
   {
-    title: "Fallout – Decoración (placa/logo/facción) o figura (Deathclaw/servoarmadura)",
-    desc: "Me gusta prácticamente cualquier cosa de Fallout si tiene buen diseño.",
-    tags: ["Top", "Fallout", "Decoración"],
-    price: "€€",
+    title: "Figura Pochita feliz (Chainsaw Man) — 8 cm",
+    desc: "Figura pequeña y decorativa.",
+    tags: ["Top", "Chainsaw Man", "Figura"],
+    price: "22,95 €",
+    img: "assets/products/figura-pochita.jpg",
     links: [
-      { label: "Amazon", url: "" },
-      { label: "Alternativa", url: "" }
+      { label: "El Corte Inglés", url: "https://www.elcorteingles.es/universo-friki/A50571411-figura-8-cm-pochita-feliz-chainsaw-man-furyu/?parentCategoryId=999.51265420013&color=Sin+especificar" }
     ]
   },
-
-  // Solo 1 juego en TOP (los demás van en IDEAS)
   {
-    title: "Un juego de cartas (TOP): Cards Against Humanity / Joking Hazard / Exploding Kittens",
-    desc: "Solo 1 aquí. El resto de juegos estarán en IDEAS por si alguien prefiere elegir otro.",
+    title: "HDP – Hasta Donde Puedas",
+    desc: "Juego de cartas de humor negro en español.",
+    tags: ["Top", "Cartas", "Humor negro"],
+    price: "24,95 €",
+    img: "assets/products/hdp-hasta-donde-puedas.jpg",
+    links: [
+      { label: "Amazon", url: "https://amzn.eu/d/4e3pFih" }
+    ]
+  },
+  {
+    title: "Bang! (juego de cartas)",
+    desc: "Clásico muy rejugable y fácil de sacar.",
     tags: ["Top", "Juegos de mesa", "Cartas"],
-    price: "€€",
+    price: "39,95 €",
+    img: "assets/products/bang.jpg",
     links: [
-      { label: "Amazon", url: "" }
+      { label: "Amazon", url: "https://amzn.eu/d/36YjidO" },
+      { label: "El Corte Inglés", url: "https://www.elcorteingles.es/universo-friki/A14101858-juego-de-cartas-bang-la-bala-edicion-especial/?parentCategoryId=999.51265421013&color=Sin+especificar%26utm_source%3Dcopied_link%26utm_medium%3Dshared_referral%26utm_campaign%3Dshared_referral_web" }
     ]
-  },
+  }
 ];
 
-// IDEAS – por franquicia (aquí es donde meterás variedad y rangos de precio)
+// ===============================
+// 💡 IDEAS
+// ===============================
 window.IDEA_ITEMS = [
-  // Fallout
   {
-    franchise_slug: "fallout",
-    franchise_name: "Fallout",
-    title: "Figura Deathclaw",
-    desc: "Coleccionable/figura/estatua. Si es chula, me sirve.",
-    tags: ["Fallout", "Figura"],
-    price: "€€€",
-    links: [{ label: "Amazon", url: "" }, { label: "Alternativa", url: "" }]
+    franchise_slug: "setup",
+    franchise_name: "Setup / Escritorio",
+    title: "Quntis 40 cm Luz de monitor",
+    desc: "Luz suave y regulable para trabajar, estudiar o jugar.",
+    tags: ["Setup", "Luz"],
+    price: "41,99 €",
+    img: "assets/products/quntis-lightbar.jpg",
+    links: [
+      { label: "Amazon", url: "https://amzn.eu/d/6Bv4ud4" }
+    ]
   },
   {
     franchise_slug: "fallout",
     franchise_name: "Fallout",
-    title: "Figura servoarmadura (Power Armor)",
-    desc: "Cualquier modelo si está bien hecho.",
+    title: "Figura Lucy Fallout TV — 15 cm",
+    desc: "Figura McFarlane basada en la serie de Fallout.",
     tags: ["Fallout", "Figura"],
-    price: "€€€",
-    links: [{ label: "Amazon", url: "" }, { label: "Alternativa", url: "" }]
+    price: "39,95 €",
+    img: "assets/products/lucy-fallout.jpg",
+    links: [
+      { label: "El Corte Inglés", url: "https://www.elcorteingles.es/universo-friki/A52063977-figura-15-cm-lucy-fallout-tv-mc-farlane-toys/?parentCategoryId=999.51265420013&color=Sin+especificar" }
+    ]
   },
   {
     franchise_slug: "fallout",
     franchise_name: "Fallout",
-    title: "Decor de facción / placa / señal / logo",
-    desc: "Opciones baratas y medianas para decorar.",
+    title: "Minibomba atómica Fallout (almacenamiento)",
+    desc: "Decoración funcional para escritorio o estantería.",
     tags: ["Fallout", "Decoración"],
-    price: "€€",
-    links: [{ label: "Amazon", url: "" }]
-  },
-
-  // The Last of Us
-  {
-    franchise_slug: "the-last-of-us",
-    franchise_name: "The Last of Us",
-    title: "Ellie (juego) figura / diorama",
-    desc: "Figura sola o con mini escenario.",
-    tags: ["The Last of Us", "Figura"],
-    price: "€€€",
-    links: [{ label: "Amazon", url: "" }, { label: "Alternativa", url: "" }]
-  },
-  {
-    franchise_slug: "the-last-of-us",
-    franchise_name: "The Last of Us",
-    title: "Print / póster art",
-    desc: "Lámina para enmarcar, estética del juego.",
-    tags: ["The Last of Us", "Arte"],
-    price: "€€",
-    links: [{ label: "Alternativa", url: "" }]
-  },
-
-  // Stranger Things
-  {
-    franchise_slug: "stranger-things",
-    franchise_name: "Stranger Things",
-    title: "Luz Upside Down / ambiente",
-    desc: "Que no sea agresiva para los ojos.",
-    tags: ["Stranger Things", "Luz"],
-    price: "€€",
-    links: [{ label: "Amazon", url: "" }]
-  },
-  {
-    franchise_slug: "stranger-things",
-    franchise_name: "Stranger Things",
-    title: "Arte/print (Upside Down)",
-    desc: "Para pared o estantería, mejor enmarcable.",
-    tags: ["Stranger Things", "Arte"],
-    price: "€",
-    links: [{ label: "Alternativa", url: "" }]
-  },
-
-  // Hollow Knight
-  {
-    franchise_slug: "hollow-knight",
-    franchise_name: "Hollow Knight",
-    title: "Hornet (pose agresiva / chill)",
-    desc: "8–12 cm, resina preferible, sin Funko.",
-    tags: ["Hollow Knight", "Figura"],
-    price: "€€€",
-    links: [{ label: "Tienda", url: "" }]
-  },
-
-  // Arcane
-  {
-    franchise_slug: "arcane",
-    franchise_name: "Arcane",
-    title: "Jinx (figura individual)",
-    desc: "Figura sola, tamaño contenido.",
-    tags: ["Arcane", "Figura"],
-    price: "€€€",
-    links: [{ label: "Tienda", url: "" }]
-  },
-  {
-    franchise_slug: "arcane",
-    franchise_name: "Arcane",
-    title: "Vi (figura individual)",
-    desc: "Figura sola, tamaño contenido.",
-    tags: ["Arcane", "Figura"],
-    price: "€€€",
-    links: [{ label: "Tienda", url: "" }]
-  },
-
-  // Chainsaw Man
-  {
-    franchise_slug: "chainsaw-man",
-    franchise_name: "Chainsaw Man",
-    title: "Makima (prioridad) / Power (segunda)",
-    desc: "Preferencia por Makima, luego Power.",
-    tags: ["Chainsaw Man", "Figura"],
-    price: "€€€",
-    links: [{ label: "Amazon", url: "" }]
-  },
-
-  // Valorant
-  {
-    franchise_slug: "valorant",
-    franchise_name: "Valorant",
-    title: "Mini figuras (preferente) – Raze / Killjoy / Omen",
-    desc: "Mini figuras mejor que llaveros.",
-    tags: ["Valorant", "Mini figura"],
-    price: "€€",
-    links: [{ label: "Amazon", url: "" }]
-  },
-
-  // Death Note
-  {
-    franchise_slug: "death-note",
-    franchise_name: "Death Note",
-    title: "Misa Misa (estética estantería)",
-    desc: "Si es bonita para decoración, top.",
-    tags: ["Death Note", "Figura"],
-    price: "€€€",
-    links: [{ label: "Tienda", url: "" }]
-  },
-  {
-    franchise_slug: "death-note",
-    franchise_name: "Death Note",
-    title: "L y Light (secundarios / enfrentados)",
-    desc: "Opcional: composición chula.",
-    tags: ["Death Note", "Figura"],
-    price: "€€",
-    links: [{ label: "Tienda", url: "" }]
-  },
-
-  // Harry Potter
-  {
-    franchise_slug: "harry-potter",
-    franchise_name: "Harry Potter",
-    title: "Luna Lovegood (figura) o decor del mundo mágico",
-    desc: "Figura de Luna o un objeto decorativo bonito.",
-    tags: ["Harry Potter", "Decoración"],
-    price: "€€",
-    links: [{ label: "Amazon", url: "" }]
-  },
-
-  // Voleibol
-  {
-    franchise_slug: "voleibol",
-    franchise_name: "Voleibol",
-    title: "Manguitos negros con detalle sutil",
-    desc: "Para evitar raspones al tirarme a por la bola.",
-    tags: ["Voleibol", "Equipación"],
-    price: "€",
-    links: [{ label: "Amazon", url: "" }]
-  },
-  {
-    franchise_slug: "voleibol",
-    franchise_name: "Voleibol",
-    title: "Rodilleras funcionales (look limpio)",
-    desc: "Cómodas y que no sean horribles visualmente.",
-    tags: ["Voleibol", "Equipación"],
-    price: "€€",
-    links: [{ label: "Amazon", url: "" }]
-  },
-
-  // Juegos de mesa (aquí van todos los demás)
-  {
-    franchise_slug: "juegos-mesa",
-    franchise_name: "Juegos de mesa",
-    title: "Cards Against Humanity",
-    desc: "Humor negro sin filtros.",
-    tags: ["Juegos", "Cartas"],
-    price: "€€",
-    links: [{ label: "Amazon", url: "" }]
-  },
-  {
-    franchise_slug: "juegos-mesa",
-    franchise_name: "Juegos de mesa",
-    title: "Joking Hazard",
-    desc: "Absurdísimo y rejugable.",
-    tags: ["Juegos", "Cartas"],
-    price: "€€",
-    links: [{ label: "Amazon", url: "" }]
+    price: "27,99 €",
+    img: "assets/products/bomba-fallout.jpg",
+    links: [
+      { label: "Amazon", url: "https://amzn.eu/d/3t1wfiO" }
+    ]
   },
   {
     franchise_slug: "juegos-mesa",
     franchise_name: "Juegos de mesa",
     title: "Exploding Kittens",
-    desc: "Rápido, caótico, fácil de sacar.",
+    desc: "Juego rápido y caótico.",
     tags: ["Juegos", "Cartas"],
-    price: "€",
-    links: [{ label: "Amazon", url: "" }]
+    price: "19,95 €",
+    img: "assets/products/exploding-kittens.jpg",
+    links: [
+      { label: "Amazon", url: "https://amzn.eu/d/2pw5Zq8" },
+      { label: "El Corte Inglés", url: "https://www.elcorteingles.es/juguetes/A32996125-exploding-kittens/?parentCategoryId=999.51265421013&color=Sin+especificar" }
+    ]
   },
   {
-    franchise_slug: "juegos-mesa",
-    franchise_name: "Juegos de mesa",
-    title: "Monopoly Fallout",
-    desc: "Opcional si se encuentra.",
-    tags: ["Juegos", "Tablero"],
-    price: "€€",
-    links: [{ label: "Amazon", url: "" }]
+    franchise_slug: "barajas",
+    franchise_name: "Barajas / Cartas",
+    title: "Baraja de cartas Kuromi",
+    desc: "Detalle pequeño y decorativo.",
+    tags: ["Kuromi", "Cartas"],
+    price: "11,99 € (oferta: 7,49 €)",
+    img: "assets/products/baraja-kuromi.jpg",
+    links: [
+      { label: "Amazon", url: "https://amzn.eu/d/5NNUstU" }
+    ]
   },
+  {
+    franchise_slug: "barajas",
+    franchise_name: "Barajas / Cartas",
+    title: "Baraja de cartas Wednesday",
+    desc: "Baraja temática estilo Wednesday.",
+    tags: ["Wednesday", "Cartas"],
+    price: "11,99 €",
+    img: "assets/products/baraja-wednesday.jpg",
+    links: [
+      { label: "Amazon", url: "https://amzn.eu/d/6BVCapl" }
+    ]
+  },
+  {
+    franchise_slug: "libros",
+    franchise_name: "Libros",
+    title: "Clean Code (español) — Robert C. Martin",
+    desc: "Buenas prácticas para escribir mejor código.",
+    tags: ["Programación", "Libro"],
+    price: "50,82 € (antes: 53,50 €)",
+    img: "assets/products/clean-code.jpg",
+    links: [
+      { label: "Amazon", url: "https://amzn.eu/d/jf5qOvZ" }
+    ]
+  },
+  {
+    franchise_slug: "libros",
+    franchise_name: "Libros",
+    title: "El Arte de Diseñar Juegos — Jesse Schell",
+    desc: "Diseño de videojuegos desde una visión global.",
+    tags: ["Videojuegos", "Diseño", "Libro"],
+    price: "57 € (antes: 60 €)",
+    img: "assets/products/arte-disenar-juegos.jpg",
+    links: [
+      { label: "Amazon", url: "https://amzn.eu/d/6eEZB5k" }
+    ]
+  },
+  {
+    franchise_slug: "hollow-knight",
+    franchise_name: "Hollow Knight",
+    title: "Libro hueco Hollow Knight",
+    desc: "Libro decorativo tipo caja para guardar objetos.",
+    tags: ["Hollow Knight", "Decoración"],
+    price: "24,69 € (antes: 25,99 €)",
+    img: "assets/products/libro-hueco-hollow.jpg",
+    links: [
+      { label: "Amazon", url: "https://amzn.eu/d/6XYZK4q" }
+    ]
+  }
 ];
