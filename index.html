@@ -9,19 +9,74 @@
 </head>
 <body>
 
-  <header class="hero">
+  <header class="hero" id="home">
     <div class="hero__inner">
-      <div class="badge">🎁 Carta de Reyes</div>
-      <h1>Carta de Reyes de Víctor Hugo</h1>
+      <div class="badge">🎄 2025-2026</div>
+      <h1>Bienvenido a la carta de Reyes de Víctor Hugo 🎁</h1>
 
-      <p class="hero__text">
-        Este año me apetecía hacerlo distinto: una carta digital para que, con poco o mucho tiempo, puedas elegir algo
-        que de verdad me encaje y se use, sin riesgo de que acabe cogiendo polvo.
-      </p>
+      <div class="section" style="margin-top:14px;">
+        <div class="section__head">
+          <h2>🧾 Carta a los Reyes</h2>
+        </div>
+
+        <p>Queridos Reyes Magos 🎁</p>
+
+        <p>
+          Este año he querido hacer la carta con un poco más de calma y conciencia. No tanto pensando en lo que quiero
+          recibir, sino en todo lo que ha pasado durante el año y en cómo he intentado estar a la altura, tanto conmigo
+          mismo como con los demás.
+        </p>
+
+        <p>
+          Ha sido un año de aprender, de trabajar, de organizarme mejor y de ayudar siempre que he podido. He puesto
+          ganas en mis proyectos, he seguido formándome, he apoyado a la gente que tengo cerca y he intentado crecer,
+          no solo en lo profesional, sino también como persona.
+        </p>
+
+        <p>
+          No todo ha sido fácil, pero he aprendido a ser constante, a no rendirme y a valorar mucho más el tiempo, el
+          esfuerzo y a las personas que me rodean. Y eso, para mí, ya es un regalo importante.
+        </p>
+
+        <p>
+          Para el año que viene no pido nada extraordinario: salud, estabilidad, oportunidades para trabajar de lo que me
+          gusta y poder seguir construyendo un futuro tranquilo, con ilusión y rodeado de buena gente. Que podamos estar
+          bien, que haya motivos para celebrar y que no falte nunca un detalle bonito que nos saque una sonrisa.
+        </p>
+
+        <p>
+          Si este año cae algún regalo, será más por la ilusión que por la necesidad. Cualquier detalle bien elegido,
+          pensado con cariño, será más que suficiente.
+        </p>
+
+        <p>Gracias por estar siempre ahí y por todo lo bueno que venga.</p>
+
+        <p style="margin-bottom:0;">
+          Con cariño,<br />
+          <strong>Víctor Hugo</strong>
+        </p>
+      </div>
+
+      <div class="section" style="margin-top:14px;">
+        <div class="section__head">
+          <h2>🧭 Cómo funciona esta carta</h2>
+          <p class="muted">
+            He creado esta página para que regalar sea sencillo y para evitar regalos que, aunque se hagan con buena
+            intención, acaben olvidados o sin usarse.
+          </p>
+        </div>
+
+        <p><strong>✅ TOP</strong> → Lo principal. Si eliges algo de ahí, es difícil fallar.</p>
+        <p><strong>💡 IDEAS</strong> → Franquicias + ejemplos de todos los precios para elegir con libertad.</p>
+
+        <p class="muted" style="margin-bottom:0;">
+          Evitar Funkos y cosas enormes 🙏 Mejor calidad que cantidad.
+        </p>
+      </div>
 
       <div class="cta">
-        <a class="btn btn--primary" href="#top">Ver TOP (no fallas)</a>
-        <a class="btn btn--ghost" href="#ideas">Ver IDEAS</a>
+        <a class="btn btn--primary" href="#top">✅ TOP (no fallas)</a>
+        <a class="btn btn--ghost" href="#ideas">💡 IDEAS</a>
       </div>
 
       <div class="controls">
@@ -35,35 +90,29 @@
   </header>
 
   <main class="main">
-
-    <!-- TOP -->
     <section id="top" class="section">
       <div class="section__head">
         <h2>✅ TOP (no fallas)</h2>
-        <p class="muted">Si quieres ir a tiro fijo, tira de esta lista.</p>
+        <p class="muted">Aquí están mis prioridades reales. Las dos primeras son “las gordas”, lo demás es flexible.</p>
       </div>
 
       <div id="topGrid" class="grid"></div>
       <div id="topEmpty" class="empty hidden">No hay resultados con ese texto.</div>
     </section>
 
-    <!-- IDEAS -->
     <section id="ideas" class="section">
       <div class="section__head">
         <h2>💡 IDEAS</h2>
-        <p class="muted">Aquí manda la franquicia / estilo. Hay opciones más baratas y más caras.</p>
+        <p class="muted">Aquí manda la franquicia/estilo. Hay opciones más baratas y más caras.</p>
       </div>
 
       <div id="ideasGrid" class="grid"></div>
       <div id="ideasEmpty" class="empty hidden">No hay resultados con ese texto.</div>
     </section>
-
   </main>
 
   <footer class="footer">
-    <p class="muted">
-      Gracias por el detalle 🖤 — con cualquier cosa ya estoy más que contento.
-    </p>
+    <p class="muted">Hecho con cariño. Si dudas, pregunta y listo 🙂</p>
   </footer>
 
   <script src="data.js"></script>
